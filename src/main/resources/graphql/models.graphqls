@@ -1,0 +1,28 @@
+schema {
+    query : Query
+}
+
+type Query {
+    phenotypes: [Phenotype]!
+    countPhenotypes: Long!
+    phenotype(id: String): Phenotype!
+}
+
+type Phenotype {
+    id: ID
+    accessionId: String
+    term: String
+    definition: Int
+    parents: [Phenotype]
+    children: [Phenotype]
+    ancestors: [Phenotype]
+    descendants: [Phenotype]
+}
+
+type StatisticalResult {
+    id: String
+    pValue: Float
+    sex: String
+    phenotype: Phenotype
+}
+

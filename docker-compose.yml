@@ -1,0 +1,94 @@
+version: '3.2'
+
+services:
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    networks:
+      - app-network
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  api:
+    build:
+      context: ./
+      dockerfile: src/main/resources/.docker/api.dockerfile
+    image: api:latest
+    volumes:
+      - logs:/logs
+    command:
+      - java
+      - -jar
+      - api.jar
+    depends_on:
+      - mongodb
+    environment:
+       - spring.data.mongodb.host=mongodb
+       - spring.jackson.serialization.indent_output=true
+       - spring.jackson.serialization.WRITE_NULL_MAP_VALUES=false
+       # Include X-FORWARD_FOR headers
+       - server.use-forward-headers=true
+       # Enable gzip compression
+       - server.compression.enabled=true
+       - server.compression.mime-types=application/json,application/hal+json,application/xml,text/html,application/javascript,text/css
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+
+  node:
+    container_name: nodeapp
+    image: nodeapp
+    build:
+      context: ./webapp
+      dockerfile: .docker/node.dev.dockerfile
+    volumes:
+      - ./webapp:/var/www/angularnoderestfulservice
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "4000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  cadvisor:
+    container_name: cadvisor
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "9090:8080"
+    networks:
+      - app-network
+
+  mongoclient:
+    image: mongoclient/mongoclient:latest
+    container_name: mongoclient
+    hostname: mongoclient
+    depends_on:
+      - mongodb
+    ports:
+      - "3300:3000"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+    networks:
+      - app-network
+
+
+volumes:
+  mongo_data: null
+  angular-cli_data: null
+  logs: null
+
+networks:
+  app-network:
+    driver: bridge
