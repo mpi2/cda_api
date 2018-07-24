@@ -4,7 +4,7 @@ Spring boot command line runer app to migrate the CDA data entities to PostgreSQ
 ## Requirements
   - PostgreSQL 5+
   - Java 8+
-  - Mave 3+
+  - Maven 3+
 
 ## Installation
 ## Installation
