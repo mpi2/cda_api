@@ -7,9 +7,15 @@ Spring boot command line runer app to migrate the CDA data entities to PostgreSQ
   - Mave 3+
 
 ## Installation
+## Installation
+1. Clone this repo
 ```console
 git clone https://github.com/mpi2/cda_api.git
-cd indexer
+cd web
+```
+2. Edit the [application.properties_example](https://github.com/mpi2/cda_api/blob/master/indexer/src/main/resources/application.properties_example) file and rename it to application.properties
+3. Run the spring boot app
+```console
 mvn spring-boot:run
 ```
 
