@@ -21,6 +21,7 @@ public class Allele {
     private String accessionId;
     private String symbol;
     private String alleleMap;
+    private String mutationType;
     @ManyToOne
     @JoinColumn
     private Gene gene;

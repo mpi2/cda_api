@@ -11,7 +11,7 @@ import org.springframework.data.solr.core.mapping.SolrDocument;
 @Data
 @NoArgsConstructor
 @SolrDocument(solrCoreName = "allele2")
-public class AlleleLegacy implements EntityLegacy<Allele>{
+public class AlleleLegacy {
     @Id
     @Field("allele_mgi_accession_id")
     private String docId;
@@ -28,12 +28,6 @@ public class AlleleLegacy implements EntityLegacy<Allele>{
     @Field("allele_image")
     private String alleleImage;
 
-    @Override
-    public Allele migrate() {
-        Allele allele = new Allele();
-        allele.setAccessionId(getDocId());
-        allele.setSymbol(getAlleleSymbol());
-        allele.setAlleleMap(getAlleleImage());
-        return allele;
-    }
+    @Field("mutation_type")
+    private String alleleType;
 }

@@ -18,7 +18,9 @@ type Allele {
 type Gene {
     accessionId: String
     symbol: String
-    location: String
+    seqRegionStrand: String
+    seqRegionStart: String
+    seqRegionEnd: String
 }
 
 
@@ -33,5 +35,7 @@ input AlleleFilter {
 input GeneFilter {
     accessionId: String
     symbol: String
-    location: String
+    seqRegionStrand: String
+    seqRegionStart: String
+    seqRegionEnd: String
 }

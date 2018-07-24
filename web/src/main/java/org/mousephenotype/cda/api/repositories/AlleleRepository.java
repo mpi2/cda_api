@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface AlleleRepository extends CrudRepository<Allele, String>, QueryByExampleExecutor<Allele> {
     List<Allele> findAllelesByGene_Symbol(String symbol);
+    Allele findAlleleByAccessionId(String accessionId);
 }

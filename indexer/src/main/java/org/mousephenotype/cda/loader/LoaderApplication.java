@@ -18,6 +18,6 @@ public class LoaderApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        alleleMigratorService.migrate(0, 10);
+        alleleMigratorService.migrateAll(0, 10);
     }
 }

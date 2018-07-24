@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,12 +19,11 @@ public class Gene {
     private Long id;
     private String accessionId;
     private String symbol;
+    private String name;
     private String seqRegionStrand;
     private String seqRegionStart;
     private String seqRegionEnd;
-    @OneToMany
-    @JoinTable
-    private List<Gene> synonyms;
+    private String synonyms;
     @ManyToOne
     @JoinColumn
     private HumanGeneOrthologue humanGeneOrthologue;

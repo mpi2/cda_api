@@ -7,4 +7,5 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
 public interface GeneRepository extends CrudRepository<Gene, String>, QueryByExampleExecutor<Gene> {
 
     Gene findGeneBySymbol(String geneSymbol);
+    Gene findGeneByAccessionId(String accessionId);
 }
