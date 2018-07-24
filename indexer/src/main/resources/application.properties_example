@@ -1,0 +1,6 @@
+spring.data.solr.host=
+spring.datasource.platform=
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=

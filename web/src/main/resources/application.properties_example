@@ -1,0 +1,13 @@
+graphiql.endpoint=graphql
+graphiql.mapping=graphiql
+graphiql.enabled=true
+graphql.servlet.corsEnabled=true
+graphql.servlet.enabled=true
+graphql.servlet.mapping=/graphql
+
+spring.datasource.platform=
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=
