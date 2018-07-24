@@ -25,3 +25,5 @@ hs_err_pid*
 mvn*
 .DS_STORE
 *.properties
+indexer/target/*
+*/target/*

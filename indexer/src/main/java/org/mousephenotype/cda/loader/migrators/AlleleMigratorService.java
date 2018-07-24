@@ -35,7 +35,6 @@ public class AlleleMigratorService {
         for(AlleleLegacy alleleLegacy : allelesSolr) {
             alleles.add(alleleLegacy.migrate());
             if(geneRepository.findGeneByAccessionIdEquals(alleleLegacy.getGacc()) == null) {
-                GeneLegacy geneLegacy = geneLegacyRepository.findGe
             }
 
         }
